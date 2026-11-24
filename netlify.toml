@@ -1,0 +1,5 @@
+[build]
+  publish = "LeoBotAssist (4)/LeoBotAssist"
+
+[functions]
+  directory = "LeoBotAssist (4)/LeoBotAssist/netlify/functions"
