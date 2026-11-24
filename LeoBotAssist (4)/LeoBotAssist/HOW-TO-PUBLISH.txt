@@ -1,0 +1,54 @@
+LEOBOTASSIST - HOW TO PUT IT ONLINE (FREE) AND SHARE IT
+=======================================================
+
+You do this ONCE. Afterwards you just send the link to your friends.
+
+IMPORTANT: Don't double-click the .js files and don't use "drag and drop" hosting.
+The AI brain (netlify/functions/ask.js) only runs when the site is published from GitHub (or the Netlify CLI).
+
+STEP 1 - Get the free AI key (2 minutes)
+  1. Go to  https://aistudio.google.com/apikey  and sign in with Google.
+  2. Click "Create API key" and copy it. Keep it secret. Never put it in the app files.
+
+STEP 2 - Put the files on GitHub (5 minutes)
+  1. Make a free account at https://github.com
+  2. Click "+" (top right) > "New repository". Name it  leobotassist . Click "Create repository".
+  3. Click "uploading an existing file". Unzip LeoBotAssist.zip on your PC and drag EVERYTHING inside the
+     LeoBotAssist folder into the page (index.html, app.js, sw.js, manifest.json, the icons, netlify.toml
+     and the folder  netlify ). Click "Commit changes".
+     Check that the folder netlify/functions/ask.js shows up in the repository.
+
+STEP 3 - Publish it on Netlify (3 minutes)
+  1. Make a free account at https://app.netlify.com (sign in with GitHub).
+  2. "Add new project" > "Import an existing project" > GitHub > pick  leobotassist .
+  3. Leave every setting as it is and click Deploy.
+  4. Open Project configuration > Environment variables > Add a variable:
+        Key:   GEMINI_API_KEY
+        Value: (paste your key)
+  5. Go to Deploys > Trigger deploy > Deploy project without cache.
+
+STEP 4 - Check that the brain works
+  Open this in your browser (use your own site name):
+      https://YOUR-SITE.netlify.app/.netlify/functions/ask
+  You should see:   {"ok":true,"brain":"online"}
+  If it says "missing GEMINI_API_KEY", redo step 3.4 and 3.5.
+
+STEP 5 - Share with friends
+  Send them your link  https://YOUR-SITE.netlify.app  (or tap "Share with friends" inside the app).
+
+STEP 6 - Make it a real app
+  A) Install from the browser (free, takes 5 seconds, no store):
+     Android (Chrome): open the link > tap "Install app" on the first screen (or Chrome menu > Install app).
+     iPhone (Safari):  Share button > Add to Home Screen.
+     Windows/Mac PC (Chrome or Edge): install icon at the right of the address bar.
+  B) A downloadable .apk file you can send to friends:
+     1. Go to https://www.pwabuilder.com and paste your link.
+     2. Click Package for stores > Android > Generate. Download the zip.
+     3. Inside is an .apk (install directly) and an .aab (for Google Play).
+     4. Send the .apk to your friends. On Android they open it and allow "install unknown apps" for their browser or file manager.
+  C) Google Play (costs a one-time $25): upload the .aab from PWABuilder in Google Play Console.
+
+IF SOMETHING GOES WRONG
+  - "Brain had a hiccup" in the app: open the link from step 4. If it doesn't say online, the key is missing or the deploy is old.
+  - Google's free AI has daily limits. If it says "busy", wait a bit. The app tries 3 different free models before giving up.
+  - Questions are counted on each phone. Clearing the app data resets the daily count.
